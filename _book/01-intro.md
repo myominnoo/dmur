@@ -227,8 +227,6 @@ download.file("http://stats.idre.ucla.edu/stat/data/doctor_stata_dm.dta",
 
 download.file("http://stats.idre.ucla.edu/stat/data/hsb2.csv", 
               destfile = "data/ucla/hsb2.csv")
-download.file("http://stats.idre.ucla.edu/stat/data/hsb2.dta", 
-              destfile = "data/ucla/hsb2.dta")
 download.file("http://stats.idre.ucla.edu/stat/data/hsb2.xls", 
               destfile = "data/ucla/hsb2.xls")
 ```

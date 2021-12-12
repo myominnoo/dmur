@@ -91,14 +91,13 @@ xfun::session_info()
 ## Locale: en_US.UTF-8 / en_US.UTF-8 / en_US.UTF-8 / C / en_US.UTF-8 / en_US.UTF-8
 ## 
 ## Package version:
-##   base64enc_0.1.3 bookdown_0.24.4 bslib_0.3.1     compiler_4.1.0 
-##   digest_0.6.29   evaluate_0.14   fastmap_1.1.0   fs_1.5.2       
-##   glue_1.5.1      graphics_4.1.0  grDevices_4.1.0 highr_0.9      
-##   htmltools_0.5.2 jquerylib_0.1.4 jsonlite_1.7.2  knitr_1.36     
-##   magrittr_2.0.1  methods_4.1.0   R6_2.5.1        rappdirs_0.3.3 
-##   rlang_0.4.12    rmarkdown_2.11  sass_0.4.0      stats_4.1.0    
-##   stringi_1.7.6   stringr_1.4.0   tinytex_0.35    tools_4.1.0    
-##   utils_4.1.0     xfun_0.28       yaml_2.2.1
+##   base64enc_0.1.3 bookdown_0.24.4 compiler_4.1.0  digest_0.6.29  
+##   evaluate_0.14   fastmap_1.1.0   glue_1.5.1      graphics_4.1.0 
+##   grDevices_4.1.0 highr_0.9       htmltools_0.5.2 jquerylib_0.1.4
+##   jsonlite_1.7.2  knitr_1.36      magrittr_2.0.1  methods_4.1.0  
+##   rlang_0.4.12    rmarkdown_2.11  stats_4.1.0     stringi_1.7.6  
+##   stringr_1.4.0   tinytex_0.35    tools_4.1.0     utils_4.1.0    
+##   xfun_0.28       yaml_2.2.1
 ```
 
 ```r

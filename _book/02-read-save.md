@@ -674,6 +674,10 @@ dentlab
 
 Another function `read_sav()` can read both `.sav` and `.zsav` files from IBM SPSS. See `?read_spss` or `?read_sav` for more details on their optional arguments. 
 
+#### Exercises
+
+[To add SPSS import exercises!]
+
 ### Entering data directly
 
 In R, you can construct a datasets using `as.data.frame()` or `data.frame()`. In any case, we can put small column blocks together to form a dataset as shown below.
@@ -688,10 +692,10 @@ ex_data
 
 ```
 ##          name      age
-## 1    John Doe 38.92455
-## 2  John Smith 38.50147
-## 3  James Bond 39.49461
-## 4 Jason Borne 44.09505
+## 1    John Doe 36.51011
+## 2  John Smith 35.91319
+## 3  James Bond 47.43726
+## 4 Jason Borne 42.89568
 ```
 
 ## Saving data files 

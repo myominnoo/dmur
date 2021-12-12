@@ -33,6 +33,7 @@ stata-datasets
 exercises-2
 solutions-2
 spss-datasets
+exercises-3
 entering-data-directly
 saving-data-files
 r-data-files
