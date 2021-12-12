@@ -692,10 +692,10 @@ ex_data
 
 ```
 ##          name      age
-## 1    John Doe 36.51011
-## 2  John Smith 35.91319
-## 3  James Bond 47.43726
-## 4 Jason Borne 42.89568
+## 1    John Doe 46.13416
+## 2  John Smith 39.54227
+## 3  James Bond 48.98410
+## 4 Jason Borne 37.17093
 ```
 
 ## Saving data files 

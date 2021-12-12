@@ -187,7 +187,7 @@ download_zipfile("https://www.stata-press.com/data/dmus2/dmus2.zip",
                  exdir = "data/dmus2")
 ```
 
-#### WHO Mortality Data
+### WHO Mortality Data
 
 THe following code chunks download datasets from [WHO webpage](https://www.who.int/data/data-collection-tools/who-mortality-database). 
 

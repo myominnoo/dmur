@@ -1,13 +1,6 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/16d8d5af-0a85-47ea-9461-0ae8ebd03921/deploy-status)](https://app.netlify.com/sites/dmur/deploys)
+
 Welcome! 
 
-This is a minimal example of a book based on R Markdown and **bookdown** (https://github.com/rstudio/bookdown). 
 
-This template provides a skeleton file structure that you can edit to create your book. 
-
-The contents inside the .Rmd files provide some pointers to help you get started, but feel free to also delete the content in each file and start fresh.
-
-Additional resources:
-
-The **bookdown** book: https://bookdown.org/yihui/bookdown/
-
-The **bookdown** package reference site: https://pkgs.rstudio.com/bookdown
+This is a GitHub repo that hosts source codes for the book [Data Management Using R](https://dmur.netlify.app/). 
