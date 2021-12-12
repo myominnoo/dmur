@@ -1,0 +1,287 @@
+# Using existing data files
+
+You have some data that you are eager to analyze using R. Before you can analyze the data, you must first read the data into R. This chapter describes how you can read common types of data files into R. 
+
+## Working directories 
+
+I would recommend against using absolute pathway with the `setwd()` function for your works. One main reason is that other people don't have the same pathways as yours, and it makes replicating codes in other people's devices extremely cumbersome. There are two ways I find more efficient and productive than just setting up your directory with `setwd()`. 
+
+1. Open RStudio by doublie-clicking the `.R` file. 
+2. Create an R project and open RStudio by double-clicking the `.Rproj` file. 
+
+Both methods will automatically set up your working directory to the folder where your `.R` or `.Rproj` file exists. Then you use relative pathway to navigate to other folders and files. 
+
+If you have followed the section on downloading `dmus2` datasets, you might already have a `data` folder. You can put this data folder under your project folder, whatever you may call it. For the sake of demonstration, let's create a folder named `dmur` and put this `data` folder under `dmur`. You can start create necessary `.R` and `.Rproj` files as follows. Essentially, you will have the following structures under the`dmur` folder. 
+
+```{r eval=FALSE}
+- dmur              ## this is your project or root folder
+    |
+    - data          ## this is data folder that contains `dmus2` datasets.
+        |
+        - many datasets ...     ## these are `dmus2` datasets
+
+    |
+    - dmur.R  ## You can double-click this to open RStudio 
+    |
+    - dmur.Rproj  ## You can also double-click this to open RStudio
+```
+
+[To add how to create .R or .Rproj files]
+
+## Reading data files into R
+
+There are several data files that you can read and import into R. This chapter begins by illustrating how you can read several common types of datasets into R. As you would expect, you can certainly do this in multiple ways; however I will show the ways I think simplest and most efficient. 
+
+In previous section \@ref(exampledata), we have downloaded several datasets into respective folders under a `data` folder of your current working directory. It should look like the following structure. 
+
+```{r eval=FALSE}
+- Your current working directory
+    |
+    _ data
+        |
+        _ dmus2     ## <<== This is where dmus2 datasets were downloaded ==>> 
+        |
+        _ who       ## <<== This is where who datasets were downloaded ==>>
+```
+
+When we specify a path later, we will use this folder structure. If we want to import a dataset from `dmus2` folder, we will specify the file in this format `./data/dmus2/filename`.
+
+### CSV and text data files
+
+Comma-separated values files, also known as `CSV` files, are a common format for storing raw data. They have a filename extension of `.csv`. As the name suggests, `CSV` files use `commas` to separate the variables (columns) of the data. Data files in `CSV` format often include the names of the variables in the first row, also separated by commas. 
+
+We illustrate this below by using a `momkid1.csv` data file, which includes identification number of mom, month, day and year of mom's birthday, and kid's birthday.
+
+While there are several ways to import a raw data file, we use `read_csv()` function from the `readr` package. As we use this function probably once at this time when we import datasets, we write `readr::read_csv()` to indicate the function from `readr` package without loading the whole package. We will use this pattern in the whole book whenever we need one particular function from a package at one time. 
+
+
+```{r}
+momkid1 <- readr::read_csv("data/dmus2/momkid1.csv")
+momkid1
+```
+
+The imported dataset can be displayed in the console just by typing in the assigned object name `momkid1`. 
+
+Text files are also quite popular in storing simple raw data. In the example below, the `dentists1.txt` data file contains five rows of data regarding five dentists. The four variables reflect the name of the dentist, the years she or he has been practicing, whether she or he works full time, and whether she or he recommends Quaddent gum. 
+
+```{r}
+dentists1 <- readr::read_csv("data/dmus2/dentists1.txt")
+dentists1
+```
+
+See `?read_csv` for more details on their optional arguments. 
+
+#### Exercises
+
+We have downloaded a few mortality datasets from WHO. Try to import the following datasets without looking at the answer: 
+
+* `pop` which contains reference population* and live birth data.
+* `country_codes` which contains country codes
+
+#### Solutions
+
+As you might realize, there is no file extension for these files. Try opening these files with a text editor. You will see that these files are stored in comma-separated format. Hence, we will read using `readr::read_csv()`
+
+```{r}
+pop <- readr::read_csv("data/who/pop")
+pop
+country_codes <- readr::read_csv("data/who/country_codes")
+country_codes
+```
+
+### Excel spreadsheets 
+
+You frequently receive data files stored as Excel spreadsheets. For example, the spreadsheet file named `dentists.xls` contains information about five dentists. You can import Excel spreadsheets into R by using `read_excel()` from the `readxl` package. 
+
+```{r}
+dentists <- readxl::read_excel("data/dmus2/dentists.xls")
+dentists
+```
+
+As we did with `dentists.xls`, let’s import another file named `dentists2.xls` using the `read_excel()` function.
+
+```{r}
+dentists2 <- readxl::read_excel("data/dmus2/dentists2.xls")
+dentists2
+```
+
+Only 2 variables and 4 observations were imported. These are the names of lawyers. If you open the file with Excel or a spreadsheet program, you will realize that there are three sheets in the file, namely `lawyers`, `dentists`, and `Sheet2`. When there are multiple sheets in an Excel file, the default behavior for the `read_excel()` function is to import the first sheet. As such, the results from the list command above is showing a listing of lawyers because the first sheet contained information about lawyers.
+
+We can import the contents of the sheet named `dentists` by adding the optional argument `sheet = "dentists"`, as illustrated below. This tells the function that it should specifically import the sheet named `dentists`.
+
+```{r}
+dentists2 <- readxl::read_excel("data/dmus2/dentists2.xls", sheet = "dentists")
+dentists2
+```
+
+As we would expect, the imported dataset has 4 variables and 5 observations which matches the contents of the `dentists` sheet.
+
+Another file named `dentist3.xls` has additional information stored along with the data. In particular, column E contains notes about the dentists, and the last row, row 7, contains column totals for some of the variables. Let's try to import this excel file using `read_excel()`. 
+
+```{r}
+dentists3 <- readxl::read_excel("data/dmus2/dentists3.xls")
+dentists3
+```
+
+As you can see, the function imported all 5 variables and 6 observations including the `Total` row. We are only interested in the first four columns and five rows. Let's include the `range` optional argument. In Excel's terms, we want the data from cell `A1` to cell `D6`. The codes below illustrate how to import a specified cell range into R.   
+
+```{r}
+dentists3 <- readxl::read_excel("data/dmus2/dentists3.xls", range = "A1:D6")
+dentists3
+
+```
+
+The console output now indicates that we have successfully imported the 4 variables and 5 observations we wanted.
+
+See `?read_excel` for more details on their optional arguments. 
+
+#### Exercises
+
+Import the following excel spreadsheets: 
+
+* `list_ctry_yrs_21June2021.xlsx` in `who` folder that contains A list of countries-years available for the mortality and population data. 
+* `miliary_tb.xlsx` in `others` folder that contains information about patients with miliary tuberculosis.
+
+#### Solutions
+
+Let's import `list_ctry_yrs_21June2021.xlsx` using `readxl::read_excel()`. 
+
+```{r}
+list_ctry_yrs <- readxl::read_excel("data/who/list_ctry_yrs_21June2021.xlsx")
+list_ctry_yrs
+```
+As you can see, this is not correct yet. Apparently, there are some texts in several rows above the data. If you open this file with a spreadsheet program and count them, you know there are exactly seven rows that we need to skip.
+
+We specify another argument called `skip` in the function to illustrate this. 
+
+```{r include=FALSE}
+list_ctry_yrs <- readxl::read_excel("data/who/list_ctry_yrs_21June2021.xlsx", skip = 7)
+```
+
+```{r eval=FALSE}
+list_ctry_yrs <- readxl::read_excel("data/who/list_ctry_yrs_21June2021.xlsx", skip = 7)
+```
+```{r}
+list_ctry_yrs
+```
+
+Similary, we can do this by specifying an exact range. 
+
+```{r include=FALSE}
+list_ctry_yrs <- readxl::read_excel("data/who/list_ctry_yrs_21June2021.xlsx", 
+                                    range = "A8:H5920")
+```
+
+```{r eval=FALSE}
+list_ctry_yrs <- readxl::read_excel("data/who/list_ctry_yrs_21June2021.xlsx", 
+                                    range = "A8:H5920")
+```
+```{r}
+list_ctry_yrs
+```
+
+For the miliary tuberculosis, it's straightforward to import this dataset. 
+
+```{r}
+miliary_tb <- readxl::read_excel("./data/others/miliary_tb.xlsx")
+miliary_tb
+```
+
+
+### Stata datasets 
+
+Let's read the same dataset `dentists` using Stata `.dta` format. We use the `read_dta()` function from the `haven` package. 
+
+```{r}
+dentists <- haven::read_dta("data/dmus2/dentists.dta")
+dentists
+```
+
+As you can see, we successfully read this dataset. The console output shows the information from the five dentists: their names, the years they have been practicing, whether they work full time, and whether they recommend Quaddent gum. 
+
+In addition to reading datasets from your computer, you can also read datasets stored on remote web servers. For example, `dentists.dta` is located on the Stata Press website, and you can use it by specifying its web URL address, as follows. 
+
+```{r eval=FALSE}
+dentists <- haven::read_dta("https://www.stata-press.com/data/dmus2/dentists.dta")
+```
+
+Often our dataset might be enormous. Let's pretend that `dentists.dta` contains many variables, and we are only interested in importing just the variables `name` and `years`. We can import just these variables from `dentists.dta`, as shown below.
+
+```{r}
+dentists <- haven::read_dta("data/dmus2/dentists.dta", 
+                            col_select = c("name", "years"))
+dentists
+```
+
+#### Exercises
+
+Import all the Stata datasets under `ucla` folder. Check the folder using `dir()`.
+
+#### Solutions
+
+```{r}
+## list ulca folder
+dir("data/ucla/")
+doctor_stata_dm <- haven::read_dta("data/ucla/doctor_stata_dm.dta")
+doctor_stata_dm
+patient_pt1_stata_dm <- haven::read_dta("data/ucla/patient_pt1_stata_dm.dta")
+patient_pt1_stata_dm
+patient_pt2_stata_dm <- haven::read_dta("data/ucla/patient_pt2_stata_dm.dta")
+patient_pt2_stata_dm
+```
+
+### SPSS datasets
+
+The `read_spss()` function from the `haven` package can import IBM SPSS Statistics `.sav` files. The examples below illustrate this by using an IBM SPSS Statistics file named `dentlab.sav`. 
+
+```{r}
+dentlab <- haven::read_spss("./data/dmus2/dentlab.sav")
+dentlab
+```
+
+See `?labelled_spss` for how labelled variables in SPSS are handled by the `haven` package in R.
+
+Similar to `read_dta()`, we can import just the variables `name` and `years` from `dentlab.sav`, as shown below.
+
+```{r}
+dentlab <- haven::read_spss("data/dmus2/dentlab.sav", 
+                            col_select = c("name", "years"))
+dentlab
+```
+
+Another function `read_sav()` can read both `.sav` and `.zsav` files from IBM SPSS. See `?read_spss` or `?read_sav` for more details on their optional arguments. 
+
+#### Exercises
+
+[To add SPSS import exercises!]
+
+### Entering data directly
+
+In R, you can construct a datasets using `as.data.frame()` or `data.frame()`. In any case, we can put small column blocks together to form a dataset as shown below.
+
+```{r}
+name <- c("John Doe", "John Smith", "James Bond", "Jason Borne")
+age <- runif(4, min = 35, max = 50) # this uses random prob distribution to generate age
+ex_data <- data.frame(name, age)
+ex_data
+```
+
+## Saving data files 
+
+### R Data files
+
+
+
+### CSV spreadsheets
+
+### Excel spreadsheets 
+
+### Stata datasets 
+
+### SPSS datasets
+
+### Other types 
+
+delimited types
+entering data directly
+

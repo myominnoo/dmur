@@ -1,0 +1,24 @@
+book_filename: "dmur"
+title: "Data Management Using R"
+language:
+  ui:
+    chapter_name: "Chapter "
+delete_merged_file: true
+new_session: yes
+rmd_files:
+- index.Rmd
+- 01-intro.Rmd
+- 02-read-save.Rmd
+
+
+## TODO Lists
+
+# Build book using the Build menu
+# Publish book with bookdown::publish_book(account = 'myominnoo')
+# Published at: https://bookdown.org/myominnoo/dmur/
+# Push book to git repo
+
+
+## Netlify.app option
+# drag and drop quick publishing @ https://app.netlify.com/sites/dmur/
+# claimed as https://dmur.netlify.app/

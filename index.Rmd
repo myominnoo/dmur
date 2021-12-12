@@ -1,0 +1,112 @@
+--- 
+title: "Data Management Using R"
+author: "Myo Minn Oo, MD, PhD"
+date: "Last updated on `r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+# url: your book url like https://bookdown.org/yihui/bookdown
+# cover-image: path to the social sharing image like images/cover.jpg
+description: This book is a guidebook for medical data management in R. 
+# link-citations: yes
+github-repo: myominnoo/dmur
+# github-repo: rstudio/bookdown-demo
+url: 'https\://dmur.netlify.com'
+editor_options: 
+  markdown: 
+    wrap: sentence
+---
+
+# {-}
+
+<meta name="description" content="This book is a guidebook for medical data management in R.">
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+Welcome to `dmur`!
+
+This is a book for anyone who are interested in manipulating and processing medical data. This book introduces different aspects of data management and how to implement these in R using RStudio. While there are a plethora of great R books covering a variety of data management topics, I hope this book would serve as a self-learning guide to avoid roadblocks and frustrations before becoming fully comfortable with using R. Many beginners find themselves wanting to develop data management skills in R, but lose their patience after they encounter a steep learning curve of R and several months of frustration. If you feel nostalgic about this, this book is for you. 
+
+It is intended for non-technical audience and Stata users to: 
+
+* Serve as a guidebook to R code for data management
+* Serve as a R code reference manual for `mStats` package
+* Provide task-centered examples addressing common data management problems
+* Assist people in transitioning to R
+
+
+<!-- ======================================================= -->
+<form target="_blank" action="https://paypal.me/myominnoo" method="post" target="_top">
+<input type="hidden" name="hosted_button_id" value="ZWAS7SEV7F8BJ" />
+<input type="image" src="https://github.com/appliedepi/epiRhandbook_eng/raw/master/images/donate_button_long.png" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" />
+</form>
+<!-- ======================================================= -->
+
+
+## Under construction {-}
+This book is still **UNDER CONSTRUCTION**. If you have any comments or suggestions, feel free to contact me at [dr.myominnoo@gmail.com](mailto::dr.myominnoo@gmail.com). Thank you!
+
+if you have a dataset that you think would be suitable for inclusion in this text (as an example or for an exercise), I would love to hear about it.
+
+<form target="_blank" action="https://forms.gle/YeJPpRcSLUzeZE5u7">
+    <input type="submit" value="SUGGESTIONS" />
+</form>
+
+
+## Inspirations {-}  
+
+Tutorials and books that provided ideas and knowledge of this book are credited within their respective pages. More generally, the following sources provided inspiration for this book:  
+
+* [Data Management Using Stata: A Practical Handbook](https://www.stata.com/bookstore/data-management-using-stata/)
+* [UCLA's Stata tutorials](https://stats.idre.ucla.edu/stata/)
+* [R for applied epidemiology and public health](https://www.epirhandbook.com/en/) 
+* [R for Data Science book (R4DS)](https://r4ds.had.co.nz/)  
+* [bookdown: Authoring Books and Technical Documents with R Markdown](https://bookdown.org/yihui/bookdown/)
+* [Netlify](https://www.netlify.com) hosts this website  
+
+The design of this book is based on the codes obtained from [Peter Higgins](https://github.com/higgi13425/rmrwr-book). Kudos to Peter!
+
+## How to use this handbook {-} 
+
+* Browse the pages in the Table of Contents, or use the search box
+* Click the "copy" icons to copy code  
+* You can follow along with the example datasets we will download in the next chapter \@ref(exampledata).
+
+## Software versions {-}
+
+The knitr package (Xie 2015) and the bookdown package (Xie 2021) were used to compile this text. The R session information is shown below:
+
+```{r}
+xfun::session_info()
+
+packageVersion("tidyverse")
+packageVersion("dplyr")
+packageVersion("magrittr")
+packageVersion("mStats")
+```
+
+<!-- ### Image credits {-}   -->
+
+<!-- Images in logo from US CDC Public Health Image Library) include [2013 Yemen looking for mosquito breeding sites](https://phil.cdc.gov/Details.aspx?pid=19623), [Ebola virus](https://phil.cdc.gov/Details.aspx?pid=23186), and [Survey in Rajasthan](https://phil.cdc.gov/Details.aspx?pid=19838).   -->
+
+
+## Terms of Use and Contribution {-}  
+
+### License {-} 
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a> Data Management Using R, 2021 <br />This work is licensed by Applied Epi Incorporated under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+
+
+Academic courses and training programs are welcome to use this handbook with their students, but please send us an email to let me know. If you have questions about your intended use, email **dr.myominnoo@gmail.com**.
+
+### Citation {-}
+
+Oo, Myo Minn. Data Management Using R. 2021.
+
+### Contribution {.unnumbered}  
+
+If you would like to make a content contribution, please contact with us first via Github issues or by email. We are implementing a schedule for updates and are creating a contributor guide.  
+
+Please note that the epiRhandbook project is released with a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.

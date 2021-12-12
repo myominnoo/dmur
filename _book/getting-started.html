@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 1 Getting Started | Data Management Using R</title>
+  <meta name="description" content="This book is a guidebook for medical data management in R." />
+  <meta name="generator" content="bookdown 0.24.4 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 1 Getting Started | Data Management Using R" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://dmur.netlify.com" />
+  
+  <meta property="og:description" content="This book is a guidebook for medical data management in R." />
+  <meta name="github-repo" content="myominnoo/dmur" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 1 Getting Started | Data Management Using R" />
+  
+  <meta name="twitter:description" content="This book is a guidebook for medical data management in R." />
+  
+
+<meta name="author" content="Myo Minn Oo, MD, PhD" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="using-existing-data-files.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="include/webex.css" type="text/css" />
+<link rel="stylesheet" href="include/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">dmur</a></li>
+
+<li class="divider"></li>
+<li><a href="index.html#section"></a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Under construction</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#inspirations"><i class="fa fa-check"></i>Inspirations</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#how-to-use-this-handbook"><i class="fa fa-check"></i>How to use this handbook</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#software-versions"><i class="fa fa-check"></i>Software versions</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#terms-of-use-and-contribution"><i class="fa fa-check"></i>Terms of Use and Contribution</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#license"><i class="fa fa-check"></i>License</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#citation"><i class="fa fa-check"></i>Citation</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#contribution"><i class="fa fa-check"></i>Contribution</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="getting-started.html"><a href="getting-started.html"><i class="fa fa-check"></i><b>1</b> Getting Started</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="getting-started.html"><a href="getting-started.html#rstudio"><i class="fa fa-check"></i><b>1.1</b> RStudio</a></li>
+<li class="chapter" data-level="1.2" data-path="getting-started.html"><a href="getting-started.html#start-screen"><i class="fa fa-check"></i><b>1.2</b> Start screen</a></li>
+<li class="chapter" data-level="1.3" data-path="getting-started.html"><a href="getting-started.html#r-packages"><i class="fa fa-check"></i><b>1.3</b> R Packages</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="getting-started.html"><a href="getting-started.html#installing-a-package-from-cran"><i class="fa fa-check"></i><b>1.3.1</b> Installing a package from CRAN</a></li>
+<li class="chapter" data-level="1.3.2" data-path="getting-started.html"><a href="getting-started.html#installing-a-package-from-github"><i class="fa fa-check"></i><b>1.3.2</b> Installing a package from GitHub</a></li>
+<li class="chapter" data-level="1.3.3" data-path="getting-started.html"><a href="getting-started.html#essential-packages-for-this-book"><i class="fa fa-check"></i><b>1.3.3</b> Essential packages for this book</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="getting-started.html"><a href="getting-started.html#mstats"><i class="fa fa-check"></i><b>1.4</b> mStats</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="getting-started.html"><a href="getting-started.html#how-it-started"><i class="fa fa-check"></i><b>1.4.1</b> How it started</a></li>
+<li class="chapter" data-level="1.4.2" data-path="getting-started.html"><a href="getting-started.html#guiding-principles"><i class="fa fa-check"></i><b>1.4.2</b> Guiding principles</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="getting-started.html"><a href="getting-started.html#package-masking"><i class="fa fa-check"></i><b>1.5</b> Package masking</a></li>
+<li class="chapter" data-level="1.6" data-path="getting-started.html"><a href="getting-started.html#piping-your-workflow"><i class="fa fa-check"></i><b>1.6</b> Piping your workflow</a></li>
+<li class="chapter" data-level="1.7" data-path="getting-started.html"><a href="getting-started.html#searching-help"><i class="fa fa-check"></i><b>1.7</b> Searching Help</a>
+<ul>
+<li class="chapter" data-level="1.7.1" data-path="getting-started.html"><a href="getting-started.html#general"><i class="fa fa-check"></i><b>1.7.1</b> General</a></li>
+<li class="chapter" data-level="1.7.2" data-path="getting-started.html"><a href="getting-started.html#getting-help"><i class="fa fa-check"></i><b>1.7.2</b> Getting help</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="getting-started.html"><a href="getting-started.html#exampledata"><i class="fa fa-check"></i><b>1.8</b> Example datasets</a>
+<ul>
+<li class="chapter" data-level="1.8.1" data-path="getting-started.html"><a href="getting-started.html#dmus2"><i class="fa fa-check"></i><b>1.8.1</b> dmus2</a></li>
+<li class="chapter" data-level="1.8.2" data-path="getting-started.html"><a href="getting-started.html#ucla-stata-tutorial"><i class="fa fa-check"></i><b>1.8.2</b> UCLA Stata Tutorial</a></li>
+<li class="chapter" data-level="1.8.3" data-path="getting-started.html"><a href="getting-started.html#miliary-tuberculosis"><i class="fa fa-check"></i><b>1.8.3</b> Miliary Tuberculosis</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="using-existing-data-files.html"><a href="using-existing-data-files.html"><i class="fa fa-check"></i><b>2</b> Using existing data files</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="using-existing-data-files.html"><a href="using-existing-data-files.html#working-directories"><i class="fa fa-check"></i><b>2.1</b> Working directories</a></li>
+<li class="chapter" data-level="2.2" data-path="using-existing-data-files.html"><a href="using-existing-data-files.html#reading-data-files-into-r"><i class="fa fa-check"></i><b>2.2</b> Reading data files into R</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="using-existing-data-files.html"><a href="using-existing-data-files.html#csv-and-text-data-files"><i class="fa fa-check"></i><b>2.2.1</b> CSV and text data files</a></li>
+<li class="chapter" data-level="2.2.2" data-path="using-existing-data-files.html"><a href="using-existing-data-files.html#excel-spreadsheets"><i class="fa fa-check"></i><b>2.2.2</b> Excel spreadsheets</a></li>
+<li class="chapter" data-level="2.2.3" data-path="using-existing-data-files.html"><a href="using-existing-data-files.html#stata-datasets"><i class="fa fa-check"></i><b>2.2.3</b> Stata datasets</a></li>
+<li class="chapter" data-level="2.2.4" data-path="using-existing-data-files.html"><a href="using-existing-data-files.html#spss-datasets"><i class="fa fa-check"></i><b>2.2.4</b> SPSS datasets</a></li>
+<li class="chapter" data-level="2.2.5" data-path="using-existing-data-files.html"><a href="using-existing-data-files.html#entering-data-directly"><i class="fa fa-check"></i><b>2.2.5</b> Entering data directly</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="using-existing-data-files.html"><a href="using-existing-data-files.html#saving-data-files"><i class="fa fa-check"></i><b>2.3</b> Saving data files</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="using-existing-data-files.html"><a href="using-existing-data-files.html#r-data-files"><i class="fa fa-check"></i><b>2.3.1</b> R Data files</a></li>
+<li class="chapter" data-level="2.3.2" data-path="using-existing-data-files.html"><a href="using-existing-data-files.html#csv-spreadsheets"><i class="fa fa-check"></i><b>2.3.2</b> CSV spreadsheets</a></li>
+<li class="chapter" data-level="2.3.3" data-path="using-existing-data-files.html"><a href="using-existing-data-files.html#excel-spreadsheets-1"><i class="fa fa-check"></i><b>2.3.3</b> Excel spreadsheets</a></li>
+<li class="chapter" data-level="2.3.4" data-path="using-existing-data-files.html"><a href="using-existing-data-files.html#stata-datasets-1"><i class="fa fa-check"></i><b>2.3.4</b> Stata datasets</a></li>
+<li class="chapter" data-level="2.3.5" data-path="using-existing-data-files.html"><a href="using-existing-data-files.html#spss-datasets-1"><i class="fa fa-check"></i><b>2.3.5</b> SPSS datasets</a></li>
+<li class="chapter" data-level="2.3.6" data-path="using-existing-data-files.html"><a href="using-existing-data-files.html#other-types"><i class="fa fa-check"></i><b>2.3.6</b> Other types</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Management Using R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="getting-started" class="section level1" number="1">
+<h1><span class="header-section-number">Chapter 1</span> Getting Started</h1>
+<p>R is an <strong>free</strong> software for statistics and graphics. It is widely used among statisticians and data scientists for developing statistical software and data analysis.</p>
+<p>R is primarily developed in three programming languages: C, Fortan and R itself. Although It itself can be used with command line interface, there are several third-party integrated development environment (IDE) with nice graphical user interface, including RStudio and Jupyter Notebook.</p>
+<p>R comes from <code>S</code> programming language. <code>S</code> was created by <a href="https://en.wikipedia.org/wiki/John_Chambers_(programmer)">John Chambers</a> in 1976 at Bell Labs. Later, two statisticians, Ross Ihaka and Robert Gentleman, developed R that is currently maintained by the R Development Core Team. R is named partly after the first names of the first two R authors and partly as a play on the name of S.</p>
+<p>R can be downloaded from <a href="http://cran.r-project.org/">http://cran.r-project.org/</a>.</p>
+<div id="rstudio" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> RStudio</h2>
+<p><code>Rstudio</code> is an integraded environment for R. It comes in two versions: Desktop version is a desktop application and server version runs on a web browser. Regular <code>RStudio</code> for personal usage is free for both desktop and server version.</p>
+<blockquote>
+<p>If R is a car engine, then RStudio is the structure of that care, body frame, interior design and every other thing that help us operate it safely, efficiently and comfotably.</p>
+</blockquote>
+<p>RStudio can be downloaded from <a href="https://rstudio.com/products/rstudio/download">their official website</a>.</p>
+</div>
+<div id="start-screen" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> Start screen</h2>
+<p>When you open RStudio, you will see a screen that looks like figure <a href="getting-started.html#fig:startscreen">1.1</a>.</p>
+<div class="figure"><span style="display:block;" id="fig:startscreen"></span>
+<img src="img/rstudio_interface.png" alt="RStudio's start screen" width="100%" />
+<p class="caption">
+Figure 1.1: RStudio’s start screen
+</p>
+</div>
+<p>The interface has four window panes. Each window pane may have several tabs or sub-windows. By default, <strong>Source Pane</strong> is on the top-left corner, <strong>Console Pane</strong> on bottom-left, <strong>Environment Pane</strong> on top-right, and <strong>Files Pane</strong> on bottom-right.</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Source Pane</strong> is a text editor that will be referred to as <em>R Script</em> later on. You can write commands and save them, which is the main point of reproducibility. Anyone who has this R Script can review and edit it in the future.</p></li>
+<li><p><strong>Console Pane</strong> is the place you write your line-by-line command. It means you can only write a single command or a long paragraph of commands. After you close the RStudio, the commands will not be saved unless you specified to do so. However, it is the best way to saving <strong>R Script</strong> in <strong>Source Pane</strong>to store the commands you desire.</p>
+<ul>
+<li>Symbol <code>&gt;</code> called prompt</li>
+<li>Type 3 + 4, and press Enter.</li>
+</ul></li>
+<li><p><strong>Environment Pane</strong> has several sub-windows. For data management and beginner, you only have to know Environment and History.</p>
+<ul>
+<li><code>Environment</code> is where R works.</li>
+<li><code>Global Environment</code> is the place where your data will be after importing data.</li>
+<li><code>History</code> saves the commands you run in R console.</li>
+<li><code>Connections</code> is where you connect to external databases.</li>
+</ul></li>
+<li><p><strong>Files Pane</strong> also has several sub-windows.</p>
+<ul>
+<li><code>Files</code> is like a folder manager on your phone. You can manage files and folders as well as set the working directory.</li>
+<li><code>Plots</code> is where your plots will appear.</li>
+<li><code>Packages</code> is where you manage your R packages. You can install it from CRAN or other repositories. You can also install locally stored R packages.</li>
+<li><code>Help</code> is where R stores documentations. You can open the help or introduction page of the respective packages as well as individual functions.</li>
+</ul></li>
+</ol>
+<p>You can arrange these windows as you like. I think putting console on the right upper window will give you a lot of freedom as you will mostly be using <strong>Source Pane</strong> and <strong>Console Pane</strong> simultaneously. You can change this by pressing the four window icon below the menu bar and choosing the option <strong>Console on the Right</strong> as shown in figure <a href="getting-started.html#fig:consoleright">1.2</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:consoleright"></span>
+<img src="img/consoleright.png" alt="Changing console to the right upper window" width="50%" />
+<p class="caption">
+Figure 1.2: Changing console to the right upper window
+</p>
+</div>
+</div>
+<div id="r-packages" class="section level2" number="1.3">
+<h2><span class="header-section-number">1.3</span> R Packages</h2>
+<p><code>Base R</code> is what you get after installing R. R is powerful because of its tens of thousands of packages. The number is still growing. This also creates the problem of confusion. Even no single user can check or use all packages R can offer. A solution is to stick to certain packages that work well for you. In this book, I will show you a few packages that works for me.</p>
+<div id="installing-a-package-from-cran" class="section level3" number="1.3.1">
+<h3><span class="header-section-number">1.3.1</span> Installing a package from CRAN</h3>
+<p>To install a package, you can use the function <code>install.packages("package_name")</code> if it is published on <code>CRAN</code>. <code>CRAN</code> is the comprehensive R Archive Network, web servers that store R packages.</p>
+<p>Packages installed directly from Github are usually under development, but up-to-date and often free from previous issues and bugs.</p>
+<p>Let’s install the packages used in this book.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="getting-started.html#cb11-1" aria-hidden="true" tabindex="-1"></a>package_name <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;tidyverse&quot;</span>, <span class="st">&quot;mStats&quot;</span>, <span class="st">&quot;flextable&quot;</span>)</span>
+<span id="cb11-2"><a href="getting-started.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(package_name)</span></code></pre></div>
+</div>
+<div id="installing-a-package-from-github" class="section level3" number="1.3.2">
+<h3><span class="header-section-number">1.3.2</span> Installing a package from GitHub</h3>
+<p>For packages published on GitHub, use either <code>devtools::install_github("repo")</code> or <code>remotes::install_github("repo")</code>.</p>
+<p>Let’s illustrate this by installing <code>remotes</code> and then <code>mStats</code> from GitHub.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="getting-started.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;remotes&quot;</span>)</span>
+<span id="cb12-2"><a href="getting-started.html#cb12-2" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;myominnoo/mStats&quot;</span>)</span></code></pre></div>
+</div>
+<div id="essential-packages-for-this-book" class="section level3" number="1.3.3">
+<h3><span class="header-section-number">1.3.3</span> Essential packages for this book</h3>
+<ul>
+<li>dplyr</li>
+<li>mStats</li>
+<li>magrittr</li>
+</ul>
+</div>
+</div>
+<div id="mstats" class="section level2" number="1.4">
+<h2><span class="header-section-number">1.4</span> mStats</h2>
+<p>R has a steep learning curve. For physicians and health professionals, they just want to get started with data management and analysis, rather than spending a lot of time to learn and master R. There might be an advantage to mastering R; however unlike statisticians and programmers, it seems a very daunting process for them to become comfortable with coding in R.</p>
+<p>The <code>mStats</code> package was developed to facilitate the data management and analysis in R while requiring only a few basic of R. It takes some principles from one of the most popular statistical software in public health settings, <code>STATA</code>. <code>STATA</code> has been in existence for a long time now that most of its commands are stable, powerful, and intuitive. These features attract power-users and help them accomplish their data tasks.</p>
+<p>In a nutshell, <code>mStats</code> is a R package that facilitates data management and analysis of health research in R environment. It includes three core sets of functions that are designed to help data management, data analysis, and reporting streamline for health research projects.</p>
+<p>For epidemiology and public health, there are already a number of good packages available for <code>R</code>, including but not limited to <code>epiCalc</code>, <code>Epi</code>, <code>epibasix</code>, <code>epiDisplay</code>, <code>epiR</code> and <code>epitools</code>. <code>mStats</code> does not intend to replace any of them, but to only contribute as much as I can to data management and analysis of health research projects.</p>
+<div id="how-it-started" class="section level3" number="1.4.1">
+<h3><span class="header-section-number">1.4.1</span> How it started</h3>
+<p>The <code>mStats</code> package came into life when I started my doctoral life in Thailand in 2018. The first version of <code>mStats</code> was released in late 2018. Initially it was intended to prove a concept of what I have learnt and how much I could make use of what I have learnt so far. In addition, I would like something open source unlike <code>STATA</code> and something different from base R.</p>
+<p>There are two packages that deeply inspired me to do this: <code>dplyr</code> under the universe of <code>tidyverse</code> by <strong>Hadley Wickham</strong> and <code>epiCalc</code> by my advisor <strong>Virasakdi Chongsuvivatwong</strong>. The first version of <code>mStats</code> made use of <code>ggplot2</code> and included functions for generating ready-made plots. I released several small patch versions with addition of a few functions that were interesting to me at that time.</p>
+<p>In mid 2019, I started another package called <code>stats2</code>. In this package, I tried to simplify the concept of one function doing one task with a few or no options to tweak the task. Although this might be in contrast with the generous flexibility of <code>R</code>, I hardly doubt beginners would mind this limitation. In fact, such simplicity might make users’ life easier to get their jobs in R done. The package was on CRAN and released on March 31, 2020.</p>
+<p>As times progress, I hope this package will find its way to some people in their works.</p>
+</div>
+<div id="guiding-principles" class="section level3" number="1.4.2">
+<h3><span class="header-section-number">1.4.2</span> Guiding principles</h3>
+<p>Most of the guiding principles behind <code>dplyr</code>, <code>tidyverse</code>, and <code>STATA</code> inspire the creation and development of the <code>mStats</code> package:</p>
+<ul>
+<li><p><strong>Compose simple functions with the pipe</strong>:</p>
+<ul>
+<li><p><code>data masking</code> for tidy evaluation: it is very common to use datasets as in the form of <code>data frame</code> in as R analysis project. <code>R</code> functions are mostly very generic and created for basic data structures of R. The [tidyverse] uses tidy evaluation and implements data masking in its <code>dplyr</code> package. This allows manipulation of <strong>data-variables</strong> as if they were “programming” variables that live in an environment. Basically, it allows you to type, as an example, <code>generate(airquality, lnOzone = log(Ozone))</code> instead of <code>airquality$lnOzone &lt;-  log(airquality$Ozone)</code>.</p></li>
+<li><p>The principle of pipes changes the paradigm of coding in <code>R</code>. The use of the pipe function <code>%&gt;%</code> from the <code>magrittr</code> package allows for cleaner code and enhances readability of the codes. Most functions in <code>mStats</code> is compatible with the usage of the pipe function.</p></li>
+</ul></li>
+<li><p><strong>Designed for humans</strong>:</p>
+<ul>
+<li><p><code>KISS</code>: Keep <code>functions</code> short and simple - one function does only one task with few options to change the nature of the task. <code>mStats</code> intentionally limits options of arguments in functions and attempts to balance between having too many argument options and having no options at all.</p></li>
+<li><p><code>Labels</code>: <code>mStats</code> consistently uses the concept of <strong>labelling variables and datasets</strong>. It also streamlines <code>labels</code> for the purpose of report generation. Though it is not necessary to label values, this can be done using certain packages like <code>labelled</code> and <code>sjlabelled</code>.</p></li>
+<li><p>Outputs: outputs in the console are well-formatted for the ease of interpretation.</p></li>
+</ul></li>
+<li><p><strong>Reproducible research</strong></p>
+<ul>
+<li>Making tables is One of the most common tasks in health research analysis where most researchers waste much time. Reproducibility in health research is becoming crucially important and depends on streamlining this process. <code>mStats</code> provides one of many workflows used for tables generation and link to <code>R</code> codes for getting the job done.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="package-masking" class="section level2" number="1.5">
+<h2><span class="header-section-number">1.5</span> Package masking</h2>
+<p>Packages including <code>mStats</code> might contain functions that are in conflicts with other packages. I suggest to explicitly use the syntax to call the desired package, <code>package::function</code>.</p>
+<p>For example, the <code>cut</code> function from <code>mStats</code> will be masked from the <code>cut</code> function from <code>base</code>. When you want to use the function from base, you need to write this: <code>base::cut()</code>.</p>
+</div>
+<div id="piping-your-workflow" class="section level2" number="1.6">
+<h2><span class="header-section-number">1.6</span> Piping your workflow</h2>
+<p>The pipe function <code>%&gt;%</code> from the <code>magrittr</code> package can connect several lines of codes in a single workflow. It allows cleaner codes and enhances human readability. As an example, if you have three generic functions, you can write codes like this: <code>function3(function32(function31(..., data), ...), ...)</code>. But it is confusing. By using <code>%&gt;%</code>, we can arrange codes from top to bottom and left to right as follow:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="getting-started.html#cb13-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb13-2"><a href="getting-started.html#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">function1</span>(...) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-3"><a href="getting-started.html#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">function2</span>(...) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-4"><a href="getting-started.html#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">function3</span>(...)</span></code></pre></div>
+</div>
+<div id="searching-help" class="section level2" number="1.7">
+<h2><span class="header-section-number">1.7</span> Searching Help</h2>
+<div id="general" class="section level3" number="1.7.1">
+<h3><span class="header-section-number">1.7.1</span> General</h3>
+<p>If you get stuck, try to google it or search on virtual forums like <code>Stack Overflow</code>. Most of what you want to know are already answered or solved in one of those forums.</p>
+</div>
+<div id="getting-help" class="section level3" number="1.7.2">
+<h3><span class="header-section-number">1.7.2</span> Getting help</h3>
+<p>If you encounter a clear bug, please file an issue with a minimal
+reproducible example on
+<a href="https://github.com/myominnoo/mStats/issues">GitHub</a>. For questions and
+other discussion, please directly email me <a href="mailto::dr.myominnoo@gmail.com">dr.myominnoo@gmail.com</a> or use the <a href="https://groups.google.com/g/mstats">mStats mailing list</a>.</p>
+</div>
+</div>
+<div id="exampledata" class="section level2" number="1.8">
+<h2><span class="header-section-number">1.8</span> Example datasets</h2>
+<p>In this book, we will use datasets from several sources. The code chunks below download these datasets into a <code>data</code> folder under your current working directory.</p>
+<p>Let’s create a function that takes a URL link for zipped files, download, and unzip the files into specified directory.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="getting-started.html#cb14-1" aria-hidden="true" tabindex="-1"></a>download_zipfile <span class="ot">&lt;-</span> <span class="cf">function</span>(url, <span class="at">exdir =</span> <span class="st">&quot;data/&quot;</span>, <span class="at">file =</span> <span class="fu">tempfile</span>(), <span class="at">junkpaths =</span> <span class="cn">TRUE</span>) {</span>
+<span id="cb14-2"><a href="getting-started.html#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (link <span class="cf">in</span> url) {</span>
+<span id="cb14-3"><a href="getting-started.html#cb14-3" aria-hidden="true" tabindex="-1"></a>        <span class="do">## download the dmus2 zipped file into temporary file</span></span>
+<span id="cb14-4"><a href="getting-started.html#cb14-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">download.file</span>(link, file)</span>
+<span id="cb14-5"><a href="getting-started.html#cb14-5" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb14-6"><a href="getting-started.html#cb14-6" aria-hidden="true" tabindex="-1"></a>        <span class="do">## extract the dmus2 datasets into the data folder</span></span>
+<span id="cb14-7"><a href="getting-started.html#cb14-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">unzip</span>(file, <span class="at">exdir =</span> exdir, <span class="at">junkpaths =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb14-8"><a href="getting-started.html#cb14-8" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb14-9"><a href="getting-started.html#cb14-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div id="dmus2" class="section level3" number="1.8.1">
+<h3><span class="header-section-number">1.8.1</span> dmus2</h3>
+<p>The following code chunk downloads datasets from one of the most popular data management books for Stata, <a href="https://www.stata-press.com/data/dmus2.html">Data Management Using Stata: A Practical Handbook, Second Edition</a></p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="getting-started.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Download dmus2 zipped file</span></span>
+<span id="cb15-2"><a href="getting-started.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">download_zipfile</span>(<span class="st">&quot;https://www.stata-press.com/data/dmus2/dmus2.zip&quot;</span>, </span>
+<span id="cb15-3"><a href="getting-started.html#cb15-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">exdir =</span> <span class="st">&quot;data/dmus2&quot;</span>)</span></code></pre></div>
+<div id="who-mortality-data" class="section level4" number="1.8.1.1">
+<h4><span class="header-section-number">1.8.1.1</span> WHO Mortality Data</h4>
+<p>THe following code chunks download datasets from <a href="https://www.who.int/data/data-collection-tools/who-mortality-database">WHO webpage</a>.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="getting-started.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 1. A list of countries-years available for the mortality and population data.</span></span>
+<span id="cb16-2"><a href="getting-started.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="do">## 2. Reference populations and live births.</span></span>
+<span id="cb16-3"><a href="getting-started.html#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 3. Country codes</span></span>
+<span id="cb16-4"><a href="getting-started.html#cb16-4" aria-hidden="true" tabindex="-1"></a>file <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;https://cdn.who.int/media/docs/default-source/world-health-data-platform/mortality-raw-data/mort_availability.zip?sfvrsn=23261e11_15&amp;ua=1&quot;</span>, </span>
+<span id="cb16-5"><a href="getting-started.html#cb16-5" aria-hidden="true" tabindex="-1"></a>          <span class="st">&quot;https://cdn.who.int/media/docs/default-source/world-health-data-platform/mortality-raw-data/mort_pop.zip?sfvrsn=937039fc_10&amp;ua=1&quot;</span>, </span>
+<span id="cb16-6"><a href="getting-started.html#cb16-6" aria-hidden="true" tabindex="-1"></a>          <span class="st">&quot;https://cdn.who.int/media/docs/default-source/world-health-data-platform/mortality-raw-data/mort_country_codes.zip?sfvrsn=800faac2_5&amp;ua=1&quot;</span>)</span>
+<span id="cb16-7"><a href="getting-started.html#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="fu">download_zipfile</span>(file, <span class="at">exdir =</span> <span class="st">&quot;data/who&quot;</span>)</span></code></pre></div>
+</div>
+</div>
+<div id="ucla-stata-tutorial" class="section level3" number="1.8.2">
+<h3><span class="header-section-number">1.8.2</span> UCLA Stata Tutorial</h3>
+<p>The following code chunks download datasets from <a href="">UCLA’s Stata tutorials</a>.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="getting-started.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">dir.exists</span>(<span class="st">&quot;data/ucla&quot;</span>)) </span>
+<span id="cb17-2"><a href="getting-started.html#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">dir.create</span>(<span class="st">&quot;data/ucla&quot;</span>) <span class="do">## this will create a directory if it&#39;s not there</span></span>
+<span id="cb17-3"><a href="getting-started.html#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="getting-started.html#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(<span class="st">&quot;http://stats.idre.ucla.edu/stat/data/patient_pt1_stata_dm.dta&quot;</span>, </span>
+<span id="cb17-5"><a href="getting-started.html#cb17-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">destfile =</span> <span class="st">&quot;data/ucla/patient_pt1_stata_dm.dta&quot;</span>)</span>
+<span id="cb17-6"><a href="getting-started.html#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(<span class="st">&quot;http://stats.idre.ucla.edu/stat/data/patient_pt2_stata_dm.dta&quot;</span>, </span>
+<span id="cb17-7"><a href="getting-started.html#cb17-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">destfile =</span> <span class="st">&quot;data/ucla/patient_pt2_stata_dm.dta&quot;</span>)</span>
+<span id="cb17-8"><a href="getting-started.html#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(<span class="st">&quot;http://stats.idre.ucla.edu/stat/data/doctor_stata_dm.dta&quot;</span>, </span>
+<span id="cb17-9"><a href="getting-started.html#cb17-9" aria-hidden="true" tabindex="-1"></a>              <span class="at">destfile =</span> <span class="st">&quot;data/ucla/doctor_stata_dm.dta&quot;</span>)</span>
+<span id="cb17-10"><a href="getting-started.html#cb17-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-11"><a href="getting-started.html#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(<span class="st">&quot;http://stats.idre.ucla.edu/stat/data/hsb2.csv&quot;</span>, </span>
+<span id="cb17-12"><a href="getting-started.html#cb17-12" aria-hidden="true" tabindex="-1"></a>              <span class="at">destfile =</span> <span class="st">&quot;data/ucla/hsb2.csv&quot;</span>)</span>
+<span id="cb17-13"><a href="getting-started.html#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(<span class="st">&quot;http://stats.idre.ucla.edu/stat/data/hsb2.dta&quot;</span>, </span>
+<span id="cb17-14"><a href="getting-started.html#cb17-14" aria-hidden="true" tabindex="-1"></a>              <span class="at">destfile =</span> <span class="st">&quot;data/ucla/hsb2.dta&quot;</span>)</span>
+<span id="cb17-15"><a href="getting-started.html#cb17-15" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(<span class="st">&quot;http://stats.idre.ucla.edu/stat/data/hsb2.xls&quot;</span>, </span>
+<span id="cb17-16"><a href="getting-started.html#cb17-16" aria-hidden="true" tabindex="-1"></a>              <span class="at">destfile =</span> <span class="st">&quot;data/ucla/hsb2.xls&quot;</span>)</span></code></pre></div>
+</div>
+<div id="miliary-tuberculosis" class="section level3" number="1.8.3">
+<h3><span class="header-section-number">1.8.3</span> Miliary Tuberculosis</h3>
+<p>The following dataset was used to evaluated a scoring system for central nervous tuberculosis among patients with miliary tuberculosis in a Chinese hospital. Read their study <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0176651">here</a>.</p>
+<p>We put this dataset into a separate path <code>data/others/</code>.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="getting-started.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">dir.exists</span>(<span class="st">&quot;data/others&quot;</span>)) </span>
+<span id="cb18-2"><a href="getting-started.html#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">dir.create</span>(<span class="st">&quot;data/others&quot;</span>) <span class="do">## this will create a directory if it&#39;s not there</span></span>
+<span id="cb18-3"><a href="getting-started.html#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="getting-started.html#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(<span class="st">&quot;https://journals.plos.org/plosone/article/file?type=supplementary&amp;id=info:doi/10.1371/journal.pone.0176651.s001&quot;</span>, </span>
+<span id="cb18-5"><a href="getting-started.html#cb18-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">destfile =</span> <span class="st">&quot;data/others/miliary_tb.xlsx&quot;</span>)</span></code></pre></div>
+
+</div>
+</div>
+</div>
+<script>
+
+/* update total correct if #webex-total_correct exists */
+update_total_correct = function() {
+  if (t = document.getElementById("webex-total_correct")) {
+    var correct = document.getElementsByClassName("webex-correct").length;
+    var solvemes = document.getElementsByClassName("webex-solveme").length;
+    var radiogroups = document.getElementsByClassName("webex-radiogroup").length;
+    var selects = document.getElementsByClassName("webex-select").length;
+
+    t.innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
+  }
+}
+
+/* webex-solution button toggling function */
+b_func = function() {
+  var cl = this.parentElement.classList;
+  if (cl.contains('open')) {
+    cl.remove("open");
+  } else {
+    cl.add("open");
+  }
+}
+
+/* function for checking solveme answers */
+solveme_func = function(e) {
+  var real_answers = JSON.parse(this.dataset.answer);
+  var my_answer = this.value;
+  var cl = this.classList;
+  if (cl.contains("ignorecase")) {
+    my_answer = my_answer.toLowerCase();
+  }
+  if (cl.contains("nospaces")) {
+    my_answer = my_answer.replace(/ /g, "")
+  }
+
+  if (my_answer == "") {
+    cl.remove("webex-correct");
+    cl.remove("webex-incorrect");
+  } else if (real_answers.includes(my_answer)) {
+    cl.add("webex-correct");
+    cl.remove("webex-incorrect");
+  } else {
+    cl.add("webex-incorrect");
+    cl.remove("webex-correct");
+  }
+
+  // match numeric answers within a specified tolerance
+  if(this.dataset.tol > 0){
+    var tol = JSON.parse(this.dataset.tol);
+    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+    if (matches.reduce((a, b) => a + b, 0) > 0) {
+      cl.add("webex-correct");
+    } else {
+      cl.remove("webex-correct");
+    }
+  }
+
+  // added regex bit
+  if (cl.contains("regex")){
+    answer_regex = RegExp(real_answers.join("|"))
+    if (answer_regex.test(my_answer)) {
+      cl.add("webex-correct");
+    }
+  }
+
+  update_total_correct();
+}
+
+/* function for checking select answers */
+select_func = function(e) {
+  var cl = this.classList
+
+  /* add style */
+  cl.remove("webex-incorrect");
+  cl.remove("webex-correct");
+  if (this.value == "answer") {
+    cl.add("webex-correct");
+  } else if (this.value != "blank") {
+    cl.add("webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+/* function for checking radiogroups answers */
+radiogroups_func = function(e) {
+  var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
+  var cl = checked_button.parentElement.classList;
+  var labels = checked_button.parentElement.parentElement.children;
+
+  /* get rid of styles */
+  for (i = 0; i < labels.length; i++) {
+    labels[i].classList.remove("webex-incorrect");
+    labels[i].classList.remove("webex-correct");
+  }
+
+  /* add style */
+  if (checked_button.value == "answer") {
+    cl.add("webex-correct");
+  } else {
+    cl.add("webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+window.onload = function() {
+  console.log("onload");
+  /* set up solution buttons */
+  var buttons = document.getElementsByTagName("button");
+
+  for (var i = 0; i < buttons.length; i++) {
+    if (buttons[i].parentElement.classList.contains('webex-solution')) {
+      buttons[i].onclick = b_func;
+    }
+  }
+
+  /* set up webex-solveme inputs */
+  var solveme = document.getElementsByClassName("webex-solveme");
+
+  for (var i = 0; i < solveme.length; i++) {
+    /* make sure input boxes don't auto-anything */
+    solveme[i].setAttribute("autocomplete","off");
+    solveme[i].setAttribute("autocorrect", "off");
+    solveme[i].setAttribute("autocapitalize", "off");
+    solveme[i].setAttribute("spellcheck", "false");
+    solveme[i].value = "";
+
+    /* adjust answer for ignorecase or nospaces */
+    var cl = solveme[i].classList;
+    var real_answer = solveme[i].dataset.answer;
+    if (cl.contains("ignorecase")) {
+      real_answer = real_answer.toLowerCase();
+    }
+    if (cl.contains("nospaces")) {
+      real_answer = real_answer.replace(/ /g, "");
+    }
+    solveme[i].dataset.answer = real_answer;
+
+    /* attach checking function */
+    solveme[i].onkeyup = solveme_func;
+    solveme[i].onchange = solveme_func;
+  }
+
+  /* set up radiogroups */
+  var radiogroups = document.getElementsByClassName("webex-radiogroup");
+  for (var i = 0; i < radiogroups.length; i++) {
+    radiogroups[i].onchange = radiogroups_func;
+  }
+
+  /* set up selects */
+  var selects = document.getElementsByClassName("webex-select");
+  for (var i = 0; i < selects.length; i++) {
+    selects[i].onchange = select_func;
+  }
+
+  update_total_correct();
+}
+
+</script>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="using-existing-data-files.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["dmur.pdf", "dmur.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
